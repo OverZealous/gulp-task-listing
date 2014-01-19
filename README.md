@@ -1,4 +1,4 @@
-![status](https://secure.travis-ci.org/overzealous/gulp-task-listing.png?branch=master)
+![status](https://secure.travis-ci.org/OverZealous/gulp-task-listing.png?branch=master)
 
 gulp-task-listing
 =======

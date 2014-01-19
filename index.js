@@ -20,13 +20,13 @@ module.exports = function(gulp) {
 	return function() {
 		var k = Object.keys(gulp.tasks).sort();
 
-		header('Main Tasks:');
+		header('Main Tasks');
 		
 		k.filter(filter(false)).forEach(function(name) {
 			console.log('    '+colors.cyan(name));
 		});
 
-		header('Other Tasks:');
+		header('Sub Tasks');
 		
 		k.filter(filter(true)).forEach(function(name) {
 			console.log('    '+name);

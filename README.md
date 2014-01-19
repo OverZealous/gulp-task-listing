@@ -8,10 +8,15 @@ Provides an easy way to get a listing of your tasks from your gulpfile.  The out
 Usage
 -----
 
-Note: You must call the exported function with your gulp instance.
+Install using:
+
+    npm i --save-dev gulp-task-listing
+
+Then add it to your gulpfile like so:
 
 ```js
 var gulp = require('gulp');
+// Note: You must call the exported function with your gulp instance.
 var help = require('gulp-task-listing')(gulp);
 
 // Add a task to render the output

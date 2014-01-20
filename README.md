@@ -16,8 +16,7 @@ Then add it to your gulpfile like so:
 
 ```js
 var gulp = require('gulp');
-// Note: You must call the exported function with your gulp instance.
-var help = require('gulp-task-listing')(gulp);
+var help = require('gulp-task-listing');
 
 // Add a task to render the output
 gulp.task('help', help);

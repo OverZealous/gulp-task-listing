@@ -1,12 +1,10 @@
-![status](https://secure.travis-ci.org/OverZealous/gulp-task-listing.png?branch=master)
+# gulp-task-listing
 
-gulp-task-listing
-=======
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 Provides an easy way to get a listing of your tasks from your gulpfile.  The output groups tasks based on whether or not they contain a hyphen (`-`) or underscore (`_`) in their name.
 
-Usage
------
+## Usage
 
 Install using:
 
@@ -48,29 +46,21 @@ Sub Tasks
     compile-js
 ```
 
+## Help Support This Project
 
-LICENSE
--------
+If you'd like to support this and other OverZealous Creations (Phil DeJarnett) projects, [donate via Gittip][gittip-url]!
 
-(MIT License)
+[![Support via Gittip][gittip-image]][gittip-url]
 
-Copyright (c) 2014 [Phil DeJarnett](http://overzealous.com)
+## License
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+[npm-url]: https://npmjs.org/package/gulp-task-listing
+[npm-image]: https://badge.fury.io/js/gulp-task-listing.png
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[travis-url]: http://travis-ci.org/OverZealous/gulp-task-listing
+[travis-image]: https://secure.travis-ci.org/OverZealous/gulp-task-listing.png?branch=master
+
+[gittip-url]: https://www.gittip.com/OverZealous/
+[gittip-image]: https://raw2.github.com/OverZealous/gittip-badge/0.1.2/dist/gittip.png

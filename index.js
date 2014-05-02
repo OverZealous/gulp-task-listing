@@ -8,8 +8,8 @@ var gulp = require('gulp');
 
 var filter = function(inc) {
 		return function(n) {
-			var hasDash = n.search(/[-_]/) !== -1;
-			return inc&&hasDash || !inc&&!hasDash;
+			var hasSeparator = n.search(/[-_:]/) !== -1;
+			return inc&&hasSeparator || !inc&&!hasSeparator;
 		}
 	},
 	header = function(text) {

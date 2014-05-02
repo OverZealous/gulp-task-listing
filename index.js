@@ -6,33 +6,62 @@ var colors = require('chalk');
 var gulp = require('gulp');
 
 
-var filter = function(inc) {
+var DEFAULT_SUBTASK_REGEX = /[-_:]/,
+	
+	filter = function(inc, subtaskFilter) {
 		return function(n) {
-			var hasSeparator = n.search(/[-_:]/) !== -1;
-			return inc&&hasSeparator || !inc&&!hasSeparator;
+			var isSubtask = subtaskFilter(n);
+			return (inc && isSubtask) || (!inc && !isSubtask);
 		}
 	},
 	header = function(text) {
 		console.log('');
 		console.log(colors.gray(text));
 		console.log('------------------------------');
+	},
+	regexFunc = function(rfn) {
+		if(rfn && typeof rfn !== "function") {
+			return function(t) {
+				return t.search(rfn) !== -1; 
+			};
+		}
+		return rfn;
+	},
+	
+	help = function(subtaskFilter, excludeFilter) {
+		subtaskFilter = regexFunc(subtaskFilter || DEFAULT_SUBTASK_REGEX);
+		excludeFilter = regexFunc(excludeFilter);
+		
+		return function(cb) {
+			var tasks = Object.keys(gulp.tasks).sort();
+			if(excludeFilter) {
+				tasks = tasks.filter(function(task) {
+					return !excludeFilter(task);
+				});
+			}
+		
+			header('Main Tasks');
+			
+			tasks.filter(filter(false, subtaskFilter)).forEach(function(name) {
+				console.log('    '+colors.cyan(name));
+			});
+		
+			header('Sub Tasks');
+			
+			tasks.filter(filter(true, subtaskFilter)).forEach(function(name) {
+				console.log('    '+name);
+			});
+		
+			console.log('');
+			
+			// we're synchronous
+			cb && cb();
+		};
 	};
 
-module.exports = function() {
-	var k = Object.keys(gulp.tasks).sort();
+module.exports = help();
 
-	header('Main Tasks');
-	
-	k.filter(filter(false)).forEach(function(name) {
-		console.log('    '+colors.cyan(name));
-	});
-
-	header('Sub Tasks');
-	
-	k.filter(filter(true)).forEach(function(name) {
-		console.log('    '+name);
-	});
-
-	console.log('');
+module.exports.withFilters = function(subtaskFilter, excludeFilter) {
+	return help(subtaskFilter, excludeFilter);
 };
 

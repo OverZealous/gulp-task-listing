@@ -1,7 +1,7 @@
 {
   "name": "gulp-task-listing",
   "description": "Adds the ability to provide a task listing for your gulpfile",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/OverZealous/gulp-task-listing",
   "repository": {
     "type": "git",

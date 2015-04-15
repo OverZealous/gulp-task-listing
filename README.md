@@ -1,6 +1,6 @@
 # gulp-task-listing
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Support via Gratipay][gratipay-image]][gratipay-url]
 
 Provides an easy way to get a listing of your tasks from your gulpfile.  By default, the output groups tasks based on whether or not they contain a hyphen (`-`), underscore (`_`), or colon (`:`) in their name.
 
@@ -94,9 +94,9 @@ gulp.task('help', taskListing.withFilters(null, function(task) {
 
 ## Help Support This Project
 
-If you'd like to support this and other OverZealous Creations (Phil DeJarnett) projects, [donate via Gittip][gittip-url]!
+If you'd like to support this and other OverZealous Creations (Phil DeJarnett) projects, [donate via Gratipay][gratipay-url]!
 
-[![Support via Gittip][gittip-image]][gittip-url]
+[![Support via Gratipay][gratipay-image]][gratipay-url]
 
 ## License
 
@@ -108,5 +108,5 @@ If you'd like to support this and other OverZealous Creations (Phil DeJarnett) p
 [travis-url]: http://travis-ci.org/OverZealous/gulp-task-listing
 [travis-image]: https://secure.travis-ci.org/OverZealous/gulp-task-listing.png?branch=master
 
-[gittip-url]: https://www.gittip.com/OverZealous/
-[gittip-image]: https://raw2.github.com/OverZealous/gittip-badge/0.1.2/dist/gittip.png
+[gratipay-url]: https://www.gratipay.com/OverZealous/
+[gratipay-image]: https://img.shields.io/gratipay/OverZealous.svg

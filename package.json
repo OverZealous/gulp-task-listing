@@ -12,6 +12,9 @@
     "url": "http://overzealous.com/"
   },
   "main": "./index.js",
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "gulpfriendly"
   ],

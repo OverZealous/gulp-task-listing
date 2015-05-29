@@ -71,4 +71,5 @@ module.exports.withFilters = function(subtaskFilter, excludeFilter) {
 
 module.exports.use = function(_gulp) {
 	gulp = _gulp;
+	return module.exports;
 };

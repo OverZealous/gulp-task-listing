@@ -52,6 +52,15 @@ Sub Tasks
 
 You can customize the output of the task listing by using the `taskListing.withFilters(subtaskFilter, excludeFilter)` method.  Both arguments are optional.  You can pass in a string, RegExp, or a custom function.
 
+Alteratively you can pass in key/value options via:
+```js
+taskListing.configure({
+    subtaskFilter: new RegExp() || String() || function(taskName){},
+    excludeFilter: new RegExp() || String() || function(taskName){},
+    showDependencies: true
+})
+```
+
 ### subtaskFilter
 
 Providing this allows you to choose which tasks are `Main Tasks` (by returning `false`), and which are `Sub Tasks` (by returning `true`).
@@ -91,6 +100,16 @@ gulp.task('help', taskListing.withFilters(null, function(task) {
 ```
 
 > Note: setting the first argument to `null` allows you to retain the default behavior for subtask detection.
+
+### showDependencies
+
+The showDependencies option additionally renders out the task dependencies for each task,
+which can be useful if you have a large set of nested tasks
+
+```js
+gulp.task('help', taskListing.configure({ showDependencies: true })
+```
+
 
 ## Help Support This Project
 

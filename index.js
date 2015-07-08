@@ -3,7 +3,8 @@
 "use strict";
 
 var colors = require('chalk');
-var gulp = require('gulp');
+var gulp   = require('gulp');
+var _      = require('lodash');
 
 
 var DEFAULT_SUBTASK_REGEX = /[-_:]/,
@@ -68,9 +69,10 @@ var DEFAULT_SUBTASK_REGEX = /[-_:]/,
 
 	help = function(options) {
 		options = options || {};
-		var showDependencies = options.showDependencies;
-		var subtaskFilter    = regexFunc(options.subtaskFilter || subtaskLookupFilter || DEFAULT_SUBTASK_REGEX);
-		var excludeFilter    = regexFunc(options.excludeFilter);
+		var showDependencies  = options.showDependencies;
+		var subtaskFilter     = regexFunc(options.subtaskFilter || subtaskLookupFilter || DEFAULT_SUBTASK_REGEX);
+		var excludeFilter     = regexFunc(options.excludeFilter);
+		var primaryTaskFilter = _.bind(_.contains, _, options.primaryTasks);
 
 		return function(cb) {
 			var tasks = Object.keys(gulp.tasks).sort();
@@ -79,6 +81,16 @@ var DEFAULT_SUBTASK_REGEX = /[-_:]/,
 					return !excludeFilter(task);
 				});
 			}
+
+			var primaryTasks = tasks.filter(filter(true, primaryTaskFilter))
+			if( primaryTasks.length ) {
+				header('Primary Tasks');
+				primaryTasks.forEach(function(name) {
+					console.log('    ' + colors.green(name) + renderDependencies(name, showDependencies) );
+				});
+				tasks = tasks.filter(filter(false, primaryTaskFilter))
+			}
+
 
 			header('Main Tasks');
 
@@ -106,18 +118,18 @@ var DEFAULT_SUBTASK_REGEX = /[-_:]/,
 module.exports = help();
 
 module.exports.configure = function(options) {
-	options = options || {
+	options = _.extend({
 		subtaskFilter:    null,
 		excludeFilter:    null,
-		showDependencies: false
-	};
+		showDependencies: false,
+		primaryTasks:     []
+	}, options);
 	return help(options);
 };
 
 module.exports.withFilters = function(subtaskFilter, excludeFilter) {
-	return help({
+	return module.exports.configure({
 		subtaskFilter:    subtaskFilter,
-		excludeFilter:    excludeFilter,
-		showDependencies: false
+		excludeFilter:    excludeFilter
 	});
 };

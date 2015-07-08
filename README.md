@@ -110,6 +110,16 @@ which can be useful if you have a large set of nested tasks
 gulp.task('help', taskListing.configure({ showDependencies: true })
 ```
 
+### primaryTasks
+
+The primaryTasks array option allows you to manually specify a list of top level tasks 
+to be rendered separately from the rest of the task list
+
+```js
+gulp.task('help', taskListing.configure({ primaryTasks: ['clean', 'development', 'staging', 'production', 'watch'] })
+```
+
+
 
 ## Help Support This Project
 

@@ -8,6 +8,29 @@ var gulp = require('gulp');
 
 var DEFAULT_SUBTASK_REGEX = /[-_:]/,
 
+	/**
+	 *  This allows top level tasks to contain [-_:] in their names,
+	 *  with subtask status being relative to other tasks in the list
+	 *  rather than strictly based on on the seperator symbol
+	 */
+	subtaskLookupFilter = function(input_task) {
+		var tasks = Object.keys(gulp.tasks).sort();
+		var isSubtask = false;
+
+		// Loop over the whole list of tasks, excluding self
+		// Check if any other tasks match as a prefix for input_task + [-_:]
+		for( var i= 0, n=tasks.length; i<n; i++ ) {
+			if( input_task !== tasks[i]
+				&& String(input_task).indexOf(tasks[i]) === 0
+				&& String(input_task[tasks[i].length]).match(DEFAULT_SUBTASK_REGEX)
+			) {
+				var isSubtask = true;
+				break;
+			}
+		}
+		return isSubtask;
+	},
+
 	filter = function(inc, subtaskFilter) {
 		return function(n) {
 			var isSubtask = subtaskFilter(n);
@@ -46,7 +69,7 @@ var DEFAULT_SUBTASK_REGEX = /[-_:]/,
 	help = function(options) {
 		options = options || {};
 		var showDependencies = options.showDependencies;
-		var subtaskFilter    = regexFunc(options.subtaskFilter || DEFAULT_SUBTASK_REGEX);
+		var subtaskFilter    = regexFunc(options.subtaskFilter || subtaskLookupFilter || DEFAULT_SUBTASK_REGEX);
 		var excludeFilter    = regexFunc(options.excludeFilter);
 
 		return function(cb) {

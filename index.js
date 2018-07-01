@@ -33,7 +33,7 @@ var DEFAULT_SUBTASK_REGEX = /[-_:]/,
 		excludeFilter = regexFunc(excludeFilter);
 
 		return function(cb) {
-			var tasks = Object.keys(gulp.tasks).sort();
+		  var tasks = gulp.tasks ? Object.keys(gulp.tasks).sort() : gulp.tree().nodes.sort();
 			if(excludeFilter) {
 				tasks = tasks.filter(function(task) {
 					return !excludeFilter(task);

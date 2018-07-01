@@ -1,6 +1,6 @@
 # gulp-task-listing
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Support via Gratipay][gratipay-image]][gratipay-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 Provides an easy way to get a listing of your tasks from your gulpfile.  By default, the output groups tasks based on whether or not they contain a hyphen (`-`), underscore (`_`), or colon (`:`) in their name.
 
@@ -92,12 +92,6 @@ gulp.task('help', taskListing.withFilters(null, function(task) {
 
 > Note: setting the first argument to `null` allows you to retain the default behavior for subtask detection.
 
-## Help Support This Project
-
-If you'd like to support this and other OverZealous Creations (Phil DeJarnett) projects, [donate via Gratipay][gratipay-url]!
-
-[![Support via Gratipay][gratipay-image]][gratipay-url]
-
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
@@ -107,6 +101,3 @@ If you'd like to support this and other OverZealous Creations (Phil DeJarnett) p
 
 [travis-url]: http://travis-ci.org/OverZealous/gulp-task-listing
 [travis-image]: https://secure.travis-ci.org/OverZealous/gulp-task-listing.png?branch=master
-
-[gratipay-url]: https://www.gratipay.com/OverZealous/
-[gratipay-image]: https://img.shields.io/gratipay/OverZealous.svg
